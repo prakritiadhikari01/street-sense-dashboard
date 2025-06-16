@@ -1,4 +1,3 @@
-
 // Mock Firebase service structure for Traffix
 // This demonstrates the data structure you would use with actual Firebase integration
 
@@ -121,6 +120,28 @@ export class FirebaseService {
     return [];
   }
 }
+
+// Export helper functions for data export
+export const getCurrentTrafficData = async (): Promise<TrafficData> => {
+  console.log('Getting current traffic data...');
+  // In real implementation: return current state from Realtime DB
+  return mockTrafficData;
+};
+
+export const getTrafficLogs = async (limit: number = 50): Promise<TrafficLog[]> => {
+  console.log(`Getting latest ${limit} traffic logs`);
+  // In real implementation: fetch from Firestore
+  // Mock data for now
+  return [
+    {
+      timestamp: new Date().toISOString(),
+      green_direction: 'north',
+      vehicle_counts: { north: 12, south: 8, east: 3, west: 15 },
+      congestion_levels: { north: 'high', south: 'medium', east: 'low', west: 'high' },
+      decision_reason: 'Maximum congestion in north direction'
+    }
+  ];
+};
 
 // Example usage in your React components:
 /*
