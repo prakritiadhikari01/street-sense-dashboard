@@ -1,5 +1,5 @@
 
-import { DashboardLayout } from "@/components/layout/DashboardLayout";
+import { MobileLayout } from "@/components/layout/MobileLayout";
 import { TrafficSummary } from "@/components/dashboard/TrafficSummary";
 import { CongestionMonitor } from "@/components/dashboard/CongestionMonitor";
 import { TrafficCharts } from "@/components/dashboard/TrafficCharts";
@@ -11,13 +11,13 @@ const Index = () => {
   const directions = ["north", "south", "east", "west"];
 
   return (
-    <DashboardLayout>
-      <div className="space-y-6">
+    <MobileLayout>
+      <div className="space-y-4 max-w-7xl mx-auto">
         {/* Live Traffic Summary */}
         <TrafficSummary />
         
-        {/* Camera Feeds */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Camera Feeds - Mobile optimized grid */}
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
           {directions.map((direction) => (
             <CameraFeed 
               key={direction}
@@ -36,7 +36,7 @@ const Index = () => {
         {/* Logs */}
         <LogsSection />
       </div>
-    </DashboardLayout>
+    </MobileLayout>
   );
 };
 
