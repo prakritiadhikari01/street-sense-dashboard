@@ -1,89 +1,64 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowUp, ArrowDown, ArrowLeft, ArrowRight } from "lucide-react";
-
-const trafficData = [
-  {
-    direction: "North",
-    icon: ArrowUp,
-    vehicles: 12,
-    isActive: true,
-    waitTime: 25,
-    congestion: "high"
-  },
-  {
-    direction: "South", 
-    icon: ArrowDown,
-    vehicles: 8,
-    isActive: false,
-    waitTime: 145,
-    congestion: "medium"
-  },
-  {
-    direction: "East",
-    icon: ArrowRight,
-    vehicles: 3,
-    isActive: false,
-    waitTime: 89,
-    congestion: "low"
-  },
-  {
-    direction: "West",
-    icon: ArrowLeft,
-    vehicles: 15,
-    isActive: false,
-    waitTime: 203,
-    congestion: "high"
-  }
-];
-
-const getCongestionColor = (level: string) => {
-  switch (level) {
-    case "high": return "text-red-400 bg-red-400/10 border-red-400";
-    case "medium": return "text-amber-400 bg-amber-400/10 border-amber-400";
-    case "low": return "text-emerald-400 bg-emerald-400/10 border-emerald-400";
-    default: return "text-slate-400 bg-slate-400/10 border-slate-400";
-  }
-};
+import { TrafficLight } from "@/components/ui/traffic-light";
+import { Clock, Car, Users } from "lucide-react";
 
 export function TrafficSummary() {
+  const currentGreen = "north";
+  const directions = ["north", "south", "east", "west"];
+  
+  const trafficData = {
+    north: { count: 12, waitTime: 45 },
+    south: { count: 6, waitTime: 120 },
+    east: { count: 3, waitTime: 180 },
+    west: { count: 8, waitTime: 90 }
+  };
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {trafficData.map((data) => {
-        const Icon = data.icon;
-        return (
-          <Card key={data.direction} className="bg-slate-900 border-slate-800 hover:border-slate-700 transition-colors">
-            <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-white flex items-center space-x-2">
-                  <Icon className="w-5 h-5" />
-                  <span>{data.direction}</span>
-                </CardTitle>
-                {data.isActive && (
-                  <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-                )}
+    <Card className="bg-card border-border">
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <CardTitle className="text-card-foreground">Live Traffic Summary</CardTitle>
+          <Badge variant="outline" className="border-emerald-400 text-emerald-400">
+            <div className="w-2 h-2 bg-emerald-400 rounded-full mr-2 animate-pulse"></div>
+            Active
+          </Badge>
+        </div>
+      </CardHeader>
+      <CardContent>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {directions.map((direction) => (
+            <div 
+              key={direction} 
+              className="flex flex-col items-center p-4 rounded-lg bg-muted/30 border border-border/50"
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <TrafficLight 
+                  direction={direction}
+                  isActive={currentGreen === direction}
+                  className="w-6 h-6"
+                />
+                <span className="font-semibold text-sm text-card-foreground capitalize">
+                  {direction}
+                </span>
               </div>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-slate-400">Vehicles</span>
-                <span className="text-2xl font-bold text-white">{data.vehicles}</span>
+              
+              <div className="flex items-center gap-1 mb-2">
+                <Car className="w-4 h-4 text-muted-foreground" />
+                <span className="text-lg font-bold text-card-foreground">
+                  {trafficData[direction as keyof typeof trafficData].count}
+                </span>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-slate-400">Wait Time</span>
-                <span className="text-sm font-medium text-slate-300">{data.waitTime}s</span>
+              
+              <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                <Clock className="w-3 h-3" />
+                <span>{trafficData[direction as keyof typeof trafficData].waitTime}s</span>
               </div>
-              <Badge 
-                variant="outline" 
-                className={`w-full justify-center ${getCongestionColor(data.congestion)}`}
-              >
-                {data.congestion.toUpperCase()}
-              </Badge>
-            </CardContent>
-          </Card>
-        );
-      })}
-    </div>
+            </div>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
   );
 }
