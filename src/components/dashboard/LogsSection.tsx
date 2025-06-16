@@ -60,15 +60,15 @@ const getEventBadge = (type: string) => {
     case "detection":
       return <Badge variant="outline" className="border-purple-400 text-purple-400">Detection</Badge>;
     default:
-      return <Badge variant="outline" className="border-slate-400 text-slate-400">Info</Badge>;
+      return <Badge variant="outline" className="border-muted-foreground text-muted-foreground">Info</Badge>;
   }
 };
 
 export function LogsSection() {
   return (
-    <Card className="bg-slate-900 border-slate-800">
+    <Card className="bg-card border-border">
       <CardHeader>
-        <CardTitle className="text-white flex items-center space-x-2">
+        <CardTitle className="text-card-foreground flex items-center space-x-2">
           <Clock className="w-5 h-5" />
           <span>System Logs</span>
         </CardTitle>
@@ -77,16 +77,16 @@ export function LogsSection() {
         <ScrollArea className="h-96">
           <div className="space-y-3">
             {logs.map((log, index) => (
-              <div key={index} className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700">
+              <div key={index} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg border border-border">
                 <div className="flex items-center space-x-4">
-                  <span className="text-sm text-slate-400 font-mono">{log.timestamp}</span>
+                  <span className="text-sm text-muted-foreground font-mono">{log.timestamp}</span>
                   {getEventBadge(log.type)}
-                  <span className="text-white font-medium">{log.event}</span>
-                  <Badge variant="secondary" className="bg-slate-700 text-slate-300">
+                  <span className="text-card-foreground font-medium">{log.event}</span>
+                  <Badge variant="secondary" className="bg-secondary text-secondary-foreground">
                     {log.direction}
                   </Badge>
                 </div>
-                <span className="text-sm text-slate-400">{log.info}</span>
+                <span className="text-sm text-muted-foreground">{log.info}</span>
               </div>
             ))}
           </div>

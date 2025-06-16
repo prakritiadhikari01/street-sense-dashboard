@@ -20,24 +20,15 @@ const getStatusIcon = (status: string) => {
     case "Clear":
       return <CheckCircle className="w-4 h-4 text-emerald-400" />;
     default:
-      return <Clock className="w-4 h-4 text-slate-400" />;
-  }
-};
-
-const getProgressColor = (color: string) => {
-  switch (color) {
-    case "red": return "bg-red-500";
-    case "amber": return "bg-amber-500";
-    case "emerald": return "bg-emerald-500";
-    default: return "bg-slate-500";
+      return <Clock className="w-4 h-4 text-muted-foreground" />;
   }
 };
 
 export function CongestionMonitor() {
   return (
-    <Card className="bg-slate-900 border-slate-800">
+    <Card className="bg-card border-border">
       <CardHeader>
-        <CardTitle className="text-white flex items-center space-x-2">
+        <CardTitle className="text-card-foreground flex items-center space-x-2">
           <AlertTriangle className="w-5 h-5 text-amber-400" />
           <span>Congestion Monitor</span>
         </CardTitle>
@@ -49,11 +40,11 @@ export function CongestionMonitor() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   {getStatusIcon(data.status)}
-                  <span className="font-medium text-white">{data.direction}</span>
+                  <span className="font-medium text-card-foreground">{data.direction}</span>
                 </div>
                 <div className="text-right">
-                  <span className="text-sm text-slate-400">Score: </span>
-                  <span className="font-bold text-white">{data.score}</span>
+                  <span className="text-sm text-muted-foreground">Score: </span>
+                  <span className="font-bold text-card-foreground">{data.score}</span>
                 </div>
               </div>
               <Progress 
@@ -67,7 +58,7 @@ export function CongestionMonitor() {
                 }`}>
                   {data.status}
                 </span>
-                <span className="text-slate-400">Wait: {data.waitTime}s</span>
+                <span className="text-muted-foreground">Wait: {data.waitTime}s</span>
               </div>
             </div>
           ))}

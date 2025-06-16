@@ -21,22 +21,22 @@ export function TrafficCharts() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* Current Traffic Bar Chart */}
-      <Card className="bg-slate-900 border-slate-800">
+      <Card className="bg-card border-border">
         <CardHeader>
-          <CardTitle className="text-white">Current Vehicle Count</CardTitle>
+          <CardTitle className="text-card-foreground">Current Vehicle Count</CardTitle>
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={currentTrafficData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-              <XAxis dataKey="direction" stroke="#94a3b8" />
-              <YAxis stroke="#94a3b8" />
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--muted-foreground))" />
+              <XAxis dataKey="direction" stroke="hsl(var(--muted-foreground))" />
+              <YAxis stroke="hsl(var(--muted-foreground))" />
               <Tooltip 
                 contentStyle={{ 
-                  backgroundColor: '#1e293b', 
-                  border: '1px solid #334155',
+                  backgroundColor: 'hsl(var(--card))', 
+                  border: '1px solid hsl(var(--border))',
                   borderRadius: '8px',
-                  color: '#fff'
+                  color: 'hsl(var(--card-foreground))'
                 }} 
               />
               <Bar dataKey="vehicles" fill="#10b981" radius={[4, 4, 0, 0]} />
@@ -46,22 +46,22 @@ export function TrafficCharts() {
       </Card>
 
       {/* Historical Traffic Line Chart */}
-      <Card className="bg-slate-900 border-slate-800">
+      <Card className="bg-card border-border">
         <CardHeader>
-          <CardTitle className="text-white">Traffic Trends</CardTitle>
+          <CardTitle className="text-card-foreground">Traffic Trends</CardTitle>
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={historicalData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-              <XAxis dataKey="time" stroke="#94a3b8" />
-              <YAxis stroke="#94a3b8" />
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--muted-foreground))" />
+              <XAxis dataKey="time" stroke="hsl(var(--muted-foreground))" />
+              <YAxis stroke="hsl(var(--muted-foreground))" />
               <Tooltip 
                 contentStyle={{ 
-                  backgroundColor: '#1e293b', 
-                  border: '1px solid #334155',
+                  backgroundColor: 'hsl(var(--card))', 
+                  border: '1px solid hsl(var(--border))',
                   borderRadius: '8px',
-                  color: '#fff'
+                  color: 'hsl(var(--card-foreground))'
                 }} 
               />
               <Line type="monotone" dataKey="North" stroke="#ef4444" strokeWidth={2} />
