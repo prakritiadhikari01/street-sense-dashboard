@@ -10,33 +10,14 @@ interface TrafficLightProps {
 export function TrafficLight({ direction, isActive, className }: TrafficLightProps) {
   return (
     <div className={cn("relative", className)}>
-      {/* Traffic Light Container */}
-      <div className="w-12 h-16 bg-gray-800 dark:bg-gray-900 rounded-lg border-2 border-gray-600 dark:border-gray-700 flex flex-col items-center justify-center gap-1 p-1">
-        {/* Red Light */}
+      {/* Single Traffic Light Circle */}
+      <div className="w-16 h-16 flex items-center justify-center">
         <div 
           className={cn(
-            "w-3 h-3 rounded-full border transition-all duration-500",
-            !isActive 
-              ? "bg-red-500 border-red-400 shadow-lg shadow-red-500/50" 
-              : "bg-red-900/30 border-red-900/50"
-          )}
-        />
-        
-        {/* Yellow Light */}
-        <div 
-          className={cn(
-            "w-3 h-3 rounded-full border transition-all duration-500",
-            "bg-yellow-900/30 border-yellow-900/50"
-          )}
-        />
-        
-        {/* Green Light */}
-        <div 
-          className={cn(
-            "w-3 h-3 rounded-full border transition-all duration-500",
+            "w-12 h-12 rounded-full border-2 transition-all duration-500 shadow-lg",
             isActive 
-              ? "bg-emerald-500 border-emerald-400 shadow-lg shadow-emerald-500/50" 
-              : "bg-emerald-900/30 border-emerald-900/50"
+              ? "bg-emerald-500 border-emerald-400 shadow-emerald-500/50" 
+              : "bg-red-500 border-red-400 shadow-red-500/50"
           )}
         />
       </div>

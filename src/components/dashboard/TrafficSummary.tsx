@@ -19,7 +19,7 @@ export function TrafficSummary() {
     <Card className="bg-card border-border">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-card-foreground text-lg">Live Traffic Control</CardTitle>
+          <CardTitle className="text-card-foreground text-lg">Traffix - Live Traffic Control</CardTitle>
           <Badge variant="outline" className="border-emerald-400 text-emerald-400">
             <div className="w-2 h-2 bg-emerald-400 rounded-full mr-2 animate-pulse"></div>
             Active
@@ -33,7 +33,7 @@ export function TrafficSummary() {
               key={direction} 
               className="flex flex-col items-center p-4 rounded-lg bg-muted/20 border border-border/50 space-y-4"
             >
-              {/* Traffic Light */}
+              {/* Single Traffic Light Circle */}
               <TrafficLight 
                 direction={direction}
                 isActive={currentGreen === direction}
