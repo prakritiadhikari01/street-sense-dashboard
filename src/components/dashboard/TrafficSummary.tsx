@@ -16,11 +16,13 @@ export function TrafficSummary() {
   };
 
   return (
-    <Card className="bg-card border-border">
-      <CardHeader className="pb-3">
+    <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-lg">
+      <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-card-foreground text-lg">Traffix - Live Traffic Control</CardTitle>
-          <Badge variant="outline" className="border-emerald-400 text-emerald-400">
+          <CardTitle className="text-card-foreground text-xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
+            Traffix - Live Traffic Control
+          </CardTitle>
+          <Badge variant="outline" className="border-emerald-400 text-emerald-400 bg-emerald-50/50 dark:bg-emerald-950/50">
             <div className="w-2 h-2 bg-emerald-400 rounded-full mr-2 animate-pulse"></div>
             Active
           </Badge>
@@ -31,7 +33,13 @@ export function TrafficSummary() {
           {directions.map((direction) => (
             <div 
               key={direction} 
-              className="flex flex-col items-center p-4 rounded-lg bg-muted/20 border border-border/50 space-y-4"
+              className={cn(
+                "flex flex-col items-center p-5 rounded-xl border-2 transition-all duration-300 hover:scale-105",
+                "bg-gradient-to-br from-background/80 to-muted/30 backdrop-blur-sm",
+                currentGreen === direction
+                  ? "border-emerald-300/50 shadow-lg shadow-emerald-500/20 bg-emerald-50/30 dark:bg-emerald-950/20"
+                  : "border-red-300/50 shadow-lg shadow-red-500/20 bg-red-50/30 dark:bg-red-950/20"
+              )}
             >
               {/* Single Traffic Light Circle */}
               <TrafficLight 
@@ -40,7 +48,7 @@ export function TrafficSummary() {
               />
               
               {/* Traffic Stats */}
-              <div className="flex flex-col items-center space-y-2 mt-6">
+              <div className="flex flex-col items-center space-y-3 mt-4 pt-4 border-t border-border/30">
                 <div className="flex items-center gap-2">
                   <Car className="w-4 h-4 text-muted-foreground" />
                   <span className="text-lg font-bold text-card-foreground">
