@@ -3,8 +3,8 @@ import { MobileLayout } from "@/components/layout/MobileLayout";
 import { TrafficSummary } from "@/components/dashboard/TrafficSummary";
 import { CongestionMonitor } from "@/components/dashboard/CongestionMonitor";
 import { TrafficCharts } from "@/components/dashboard/TrafficCharts";
-import { LogsSection } from "@/components/dashboard/LogsSection";
 import { CameraFeed } from "@/components/ui/camera-feed";
+import { Footer } from "@/components/layout/Footer";
 
 const Index = () => {
   const currentGreen = "north";
@@ -32,10 +32,10 @@ const Index = () => {
         
         {/* Traffic Charts */}
         <TrafficCharts />
-        
-        {/* Logs */}
-        <LogsSection />
       </div>
+      
+      {/* Footer */}
+      <Footer />
     </MobileLayout>
   );
 };
