@@ -382,9 +382,3 @@ export const useTrafficData = () => {
 // Usage in components:
 const { trafficData, loading, error } = useTrafficData();
 */
-
-// Export all interfaces and services
-export {
-  FirebaseRealtimeService,
-  FirestoreService
-};
